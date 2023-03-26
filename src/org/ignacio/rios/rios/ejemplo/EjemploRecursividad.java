@@ -2,6 +2,8 @@ package org.ignacio.rios.rios.ejemplo;
 
 import org.ignacio.rios.rios.ejemplo.models.Componente;
 
+import java.util.stream.Stream;
+
 public class EjemploRecursividad {
 
     public static void main(String[] args) {
@@ -49,9 +51,10 @@ public class EjemploRecursividad {
                 .addComponente(living)
                 .addComponente(lavadero);
 
-        recursivo(Casa,0);
+      recursivoConJOcho(Casa,0).forEach(c-> System.out.println("\t".repeat(c.getNivel())+c.getNombre()));
 
-            }
+
+        }
 
    /* public static void recursivo(Componente c, String prefijo) {
         System.out.println(prefijo + c.getNombre());
@@ -66,7 +69,7 @@ public class EjemploRecursividad {
         }
     }*/
 
-    public static void recursivo(Componente c, int nivel) {
+  /*  public static void recursivo(Componente c, int nivel) {
         System.out.println("\t".repeat(nivel) + c.getNombre());
         if(c.tieneHijos()){
             for(Componente hijo: c.getHijos()){
@@ -74,7 +77,16 @@ public class EjemploRecursividad {
                       }
                }
 
+    }*/
+  public static Stream<Componente> recursivoConJOcho(Componente c , int nivel){
+         c.setNivel(nivel);
+         return  Stream.concat(Stream.of(c),c.getHijos().stream().flatMap(h->recursivoConJOcho(h,nivel+1)));
+
+
+
+
     }
+
 
 
 }

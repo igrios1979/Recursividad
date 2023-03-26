@@ -7,6 +7,18 @@ public class Componente { /*clase recursiva*/
 
 private String nombre;
 private List<Componente> hijos;
+    private int nivel;
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+
+
 
     public Componente(String nombre) {
         this.nombre = nombre;
