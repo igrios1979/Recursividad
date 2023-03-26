@@ -11,7 +11,14 @@ public class EjemploRecursividad {
           Componente  living = new Componente("living");
           Componente  lavadero = new Componente("lavadero");
           /*--------------------------------------------------------*/
-          Componente inodoro = new Componente("inodoro");
+        Componente inodoro = new Componente("inodoro");
+
+          Componente botoninodoro = new Componente("boton valvula");
+          Componente flotante = new Componente("flotante");
+
+        inodoro.addComponente(botoninodoro);
+        inodoro.addComponente(flotante);
+
           Componente videt = new Componente("videt");
           Componente lavatorio = new Componente("lavatorio");
           Componente ducha = new Componente("ducha");
@@ -42,11 +49,11 @@ public class EjemploRecursividad {
                 .addComponente(living)
                 .addComponente(lavadero);
 
-        recursivo(Casa,"");
+        recursivo(Casa,0);
 
             }
 
-    public static void recursivo(Componente c, String prefijo) {
+   /* public static void recursivo(Componente c, String prefijo) {
         System.out.println(prefijo + c.getNombre());
         if (c.tieneHijos()) {
             int numHijos = c.getHijos().size();
@@ -57,6 +64,17 @@ public class EjemploRecursividad {
             Componente ultimoHijo = c.getHijos().get(numHijos - 1);
             recursivo(ultimoHijo, prefijo + "-");
         }
+    }*/
+
+    public static void recursivo(Componente c, int nivel) {
+        System.out.println("\t".repeat(nivel) + c.getNombre());
+        if(c.tieneHijos()){
+            for(Componente hijo: c.getHijos()){
+                 recursivo(hijo,nivel+1);
+                      }
+               }
+
     }
+
 
 }
