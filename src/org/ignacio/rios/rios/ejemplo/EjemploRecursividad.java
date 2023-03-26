@@ -52,10 +52,10 @@ public class EjemploRecursividad {
             int numHijos = c.getHijos().size();
             for (int i = 0; i < numHijos - 1; i++) {
                 Componente hs = c.getHijos().get(i);
-                recursivo(hs, prefijo + "|--");
+                recursivo(hs, prefijo + "|-");
             }
             Componente ultimoHijo = c.getHijos().get(numHijos - 1);
-            recursivo(ultimoHijo, prefijo + "L__");
+            recursivo(ultimoHijo, prefijo + "-");
         }
     }
 
